@@ -1,7 +1,7 @@
 
-const router = require('koa-route');
+const router = require('koa-router')();
 var ideaCtrl = require('./controllers/ideaController.js')
-module.exports = function(app) {
+module.exports = function() {
 
     var ideas = [{
         id: '1',
@@ -11,15 +11,15 @@ module.exports = function(app) {
         id: '2',
         name: 'idea2'
     }]
-    app.use(router.get('/api/idea', ideaCtrl.list));
-
-
-    app.use(router.get('/api/idea/:id', (ctx,id)  => {
+    router.get('/api/idea', ideaCtrl.list);
+    router.get('/api/idea/:id', async function (next) {
+        var that = this;
         ideas.forEach((idea)=>{
-            if (idea.id === id){
-                ctx.body = idea;
+            if (idea.id === this.params.id){
+                this.body = idea;
                 return false;
             }
         })
-    }))
+    })
+    return router;
 }

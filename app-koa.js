@@ -1,12 +1,18 @@
 var mak = require('./core/app'),
     mongoose = require('mongoose');
+
 require('./models/idea');
+
 var Person = mongoose.model('Person'),
     Idea = mongoose.model('Idea');
 
+var handleError = err =>{
+    console.log(err);
+}
 mak.start(function(app) {
-    var appRouters = require('./route');
-    appRouters(app);
+    var router = require('./route')();
+    app.use(router.routes());
+    app.use(router.allowedMethods());
 
     Person.find({}, (err, records) => {
         if (records) {
@@ -20,7 +26,6 @@ mak.start(function(app) {
             name: 'test'
         });
         person0.save(function(err) {
-            console.log('saved !');
             if (err) return handleError(err);
         });
         var person1 = new Person({
@@ -28,7 +33,6 @@ mak.start(function(app) {
             name: 'test1'
         });
         person1.save(function(err) {
-            console.log('saved !');
             if (err) return handleError(err);
         });
         var person2 = new Person({
@@ -36,7 +40,6 @@ mak.start(function(app) {
             name: 'test2'
         });
         person2.save(function(err) {
-            console.log('saved !');
             if (err) return handleError(err);
         });
         Idea.remove({}, () => {

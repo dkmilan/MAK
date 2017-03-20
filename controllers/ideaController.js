@@ -11,8 +11,16 @@ function execQuery(query) {
     }
 }
 
-module.exports.list = function*(ctx) {
+module.exports.list = async function (ctx, next) {
     console.log("LIST");
-    ctx.body = yield Idea.find({}).exec();
-    console.log("LIST2");
+    var list = await Idea.find({}).exec();
+    ctx.body = list;
+    // yield Idea.find({}).exec().then((list)=>{
+    //
+    //     console.log("LIST2");
+    //     console.log(list);
+    //     this.body=list;
+    // });
+    console.log("LIST3");
+    console.log(ctx.body);
 }
