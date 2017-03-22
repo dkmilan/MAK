@@ -80,6 +80,43 @@ mak.start(function(app) {
         person1.save(function(err) {
             if (err) return handleError(err);
         });
+
+        var Idea = mongoose.model('Idea');
+        Idea.find({}, (error, records)=>{
+            if (records) {
+                Idea.remove({}, (err) => {
+                    console.log(records.length + 'removed!');
+                })
+            }
+            var idea1 = new Idea({
+                _id : 0,
+                name:'first idea',
+                description: 'very first idea',
+                author: person0
+            })
+            idea1.save(function(err) {
+                if (err) return handleError(err);
+            });
+            var idea2 = new Idea({
+                _id : 1,
+                name:'another idea',
+                description: 'test idea',
+                author: person1
+            })
+            idea2.save(function(err) {
+                if (err) return handleError(err);
+            });
+        })
     });
 
+    var router = require('./route')();
+    app.use(async function(ctx, next) {
+        const start = new Date();
+        await next()
+        const ms = new Date() - start;
+        console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    });
+
+    app.use(router.routes());
+    app.use(router.allowedMethods());
 });
