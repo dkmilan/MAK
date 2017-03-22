@@ -1,8 +1,8 @@
 
-const router = require('koa-router')();
+var Router = require('koa-router');
 var ideaCtrl = require('./controllers/ideaController.js')
 module.exports = function() {
-
+    var router = new Router();
     var ideas = [{
         id: '1',
         name: 'idea1',

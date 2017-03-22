@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     chalk = require('chalk')
-    Koa = require('koa');
-    config = require('./config');
+Koa = require('koa');
+config = require('./config');
 
 module.exports.init = function init(callback) {
     mongoose.Promise = config.db.promise;
@@ -12,18 +12,6 @@ module.exports.init = function init(callback) {
             console.log(err);
         } else {
             var app = new Koa();
-            app.use(function (ctx, next) {
-              const start = new Date
-              console.log(`${ctx.method} ${ctx.url}`);
-              next().then(()=>{
-                  const ms = new Date() - start;
-                  console.log(Object.keys(ctx.body));
-                  console.log("BODY type:" + typeof ctx.body);
-                  console.log("BODY:" + ctx.body);
-                  const size = ctx.body.length
-                  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-              });
-            });
             callback(app, db, config)
         }
     });

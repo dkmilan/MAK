@@ -6,13 +6,21 @@ require('./models/idea');
 var Person = mongoose.model('Person'),
     Idea = mongoose.model('Idea');
 
-var handleError = err =>{
+var handleError = err => {
     console.log(err);
 }
 mak.start(function(app) {
     var router = require('./route')();
+    app.use(async function(ctx, next) {
+        const start = new Date();
+        await next()
+        const ms = new Date() - start;
+        console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    });
+
     app.use(router.routes());
     app.use(router.allowedMethods());
+
 
     Person.find({}, (err, records) => {
         if (records) {

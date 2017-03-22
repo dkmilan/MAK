@@ -1,0 +1,115 @@
+swagger: '2.0'
+info:
+  version: 1.0.9-abcd
+  title: Innovation Platform API
+  description: A API of innovation platform
+basePath: /v1
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+  - application/xml
+paths:
+  /ideas/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        description: ID of idea to use
+        required: true
+        type: string
+      description: Returns pets based on ID
+      summary: Find pets by ID
+      operationId: getIdea
+      produces:
+        - application/json
+        - text/html
+      responses:
+        "200":
+          description: "ideas"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Idea'
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+definitions:
+
+  User:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  Idea:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      author:
+        $ref: "#/definitions/User"
+      tag:
+        type: string
+      description:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      updateDate:
+        type: string
+        format: date-time
+      likedBy:
+        type: array
+        items:
+          $ref: "#/definitions/User"
+      comments:
+        type: array
+        items:
+          $ref: "#/definitions/Comment"
+
+
+
+  Comment:
+    type: object
+    required:
+      - content
+    properties:
+      id:
+        type: string
+      author:
+        $ref: "#/definitions/User"
+      content:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      updateDate:
+        type: string
+        format: date-time
+      likes:
+        type: number
+        format: int32
+  ErrorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
