@@ -1,6 +1,6 @@
 module.exports = {
     db: {
-        uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/Mak-dev',
+        uri: 'mongodb://localhost/MASK-dev',
         options: {
             user: '',
             pass: ''
@@ -12,4 +12,16 @@ module.exports = {
     },
     port: process.env.PORT || 3000,
     host: process.env.HOST || '0.0.0.0',
+    session: {
+        key: 'koa:sess',
+        /** (string) cookie key (default is koa:sess) */
+        maxAge: 3600000,
+        /** (number) maxAge in ms (default is 1 days) */
+        overwrite: true,
+        /** (boolean) can overwrite or not (default true) */
+        httpOnly: true,
+        /** (boolean) httpOnly or not (default true) */
+        signed: true,
+        /** (boolean) signed or not (default true) */
+    }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+
+
+        <script type="text/javascript">
+            console.log("dddd");
+            $(document).ready(function(){
+                $("#login").click(function(){
+                    var username = $("#userName").val();
+
+                    var password = $("#password").val();
+                    $.post('/api/user/login', {
+                        'userName' : username,
+                        'password' : password
+                    },function(resp){
+                        console.log(resp);
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="login">
+            Username: <input id='userName' placeholder="your username"/><br>
+            Password: <input id='password' type="password" placeholder="your secret"/><br>
+
+            <input id="login" type="button" value="">Login</input>
+        </div>
+    </body>
+</html>

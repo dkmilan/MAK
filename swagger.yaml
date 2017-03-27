@@ -46,7 +46,7 @@ definitions:
     required:
       - name
     properties:
-      id:
+      corpId:
         type: string
       name:
         type: string
@@ -56,15 +56,23 @@ definitions:
       - name
     properties:
       id:
-        type: string
+        type: number
       name:
         type: string
-      author:
+      creator:
         $ref: "#/definitions/User"
+      teamMembers:
+        type: array
+        items:
+          $ref: "#/definitions/User"
       tag:
         type: string
       description:
         type: string
+      articles:
+        type: array
+        items:
+          $ref: "#/definitions/Article"
       createDate:
         type: string
         format: date-time
@@ -79,16 +87,39 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Comment"
-
-
+          embeded: true
+  Article:
+    type: object
+    required:
+      - title
+    properties:
+      id:
+        type: number
+      title:
+        type: string
+      author:
+        $ref: "#/definitions/User"
+      tag:
+        type: string
+      content:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      updateDate:
+        type: string
+        format: date-time
+      comments:
+        type: array
+        items:
+          $ref: "#/definitions/Comment"
+          embeded: true
 
   Comment:
     type: object
     required:
       - content
     properties:
-      id:
-        type: string
       author:
         $ref: "#/definitions/User"
       content:
@@ -99,17 +130,3 @@ definitions:
       updateDate:
         type: string
         format: date-time
-      likes:
-        type: number
-        format: int32
-  ErrorModel:
-    type: object
-    required:
-      - code
-      - message
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string

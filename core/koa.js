@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
-    chalk = require('chalk')
-Koa = require('koa');
-config = require('./config');
+    chalk = require('chalk'),
+    Koa = require('koa'),
+    config = require('./config');
 
 module.exports.init = function init(callback) {
     mongoose.Promise = config.db.promise;
