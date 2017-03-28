@@ -1,0 +1,207 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MASK",
+		"_postman_id": "f92aa0ff-40a5-c1b6-ab9f-558df869e7e2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "article",
+			"description": "",
+			"item": [
+				{
+					"name": "post article",
+					"request": {
+						"url": "localhost:3000/api/idea/2/article",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Tifgregte\",\n    \n    \"content\": \"1 djfreegrsh\"\n\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/idea/1/article/1",
+					"request": {
+						"url": "localhost:3000/api/idea/1/article/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "del Comment",
+					"request": {
+						"url": "localhost:3000/api/idea/2/article/2/comment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"jklf;kltddddest comment from post\"\n\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "delete article",
+					"request": {
+						"url": "localhost:3000/api/idea/2/article/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"description": "",
+			"item": [
+				{
+					"name": "New Comment",
+					"request": {
+						"url": "localhost:3000/api/idea/2/article/2/comment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"jklf;kltddddest comment from post\"\n\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "New idea Comment",
+					"request": {
+						"url": "localhost:3000/api/idea/1/comment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"idea comment from post\"\n\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "idea",
+			"description": "",
+			"item": [
+				{
+					"name": "Idea List",
+					"request": {
+						"url": "localhost:3000/api/idea",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "New Idea",
+					"request": {
+						"url": "localhost:3000/api/idea/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Another test Idea from post\"\n\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Like Ideea",
+					"request": {
+						"url": "localhost:3000/api/idea/3/like",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Single Idea Get",
+					"request": {
+						"url": "localhost:3000/api/idea/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"description": "",
+			"item": []
+		}
+	]
+}
