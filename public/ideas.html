@@ -6,10 +6,13 @@
 </head>
 <body >
 
-      <div ng-controller="AppCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="Innovation">
-        <md-content class="md-padding" layout-xs="column" layout="row">
+      <div ng-controller="AppCtrl" ng-cloak="" class="carddemoBasicUsage" ng-app="Innovation" layout="row">
+          <md-sidenav md-theme="dark-grey" flex="20" flex-gt-md="10"  md-component-id="left" md-is-locked-open="true" class="md-sidenav-left">
+            Left Nav!
+          </md-sidenav>
+        <md-content flex="80" flex-gt-md="90" class="md-padding" layout="row" layout-wrap layout-xs="column">
 
-            <md-card md-theme="{{getRandomTheme()}}" md-theme-watch="" ng-repeat="idea in ideas track by $index">
+            <md-card md-theme="{{getRandomTheme()}}"  flex-lg="19" flex-md="45"  md-theme-watch="" ng-repeat="idea in ideas track by $index">
               <img src="img/{{$index}}.jpg" alt="">
               <md-card-title>
                 <md-card-title-text>
@@ -18,12 +21,6 @@
                 </md-card-title-text>
               </md-card-title>
 
-              <md-card-content>
-                  The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-
-
-
-              </md-card-content>
               <md-card-actions layout="row" layout-align="end center">
                 <md-button>Take a look!</md-button>
                 <md-button class="{{$index%2==1?'md-icon-button md-accent': 'md-icon-button'}}" aria-label="Favorite">

@@ -1,0 +1,44 @@
+html, body {
+    height: 100%
+}
+.side-bar {
+    height: 100%;
+    background-color:#2d2f4b;
+}
+.pure-menu.custom-restricted-width {
+    background-color:#2d2f4b;
+    color: #BBB;
+}
+
+.pure-menu-item {
+    padding-top: 5px
+}
+.pure-menu-link:hover {
+    background-color:#1F2635;
+}
+.pure-menu-heading {
+    background-color:#1F2635;
+}
+.pure-menu.pure-menu-selected {
+    background-color: #1f8dd6
+}
+.user-avatar {
+    padding: 1em 1em;
+    background-color: #1F2635;
+}
+
+.user-stats {
+    color: #EEE;
+    display: block;
+    background-color: #1F2635;
+    text-align: center;
+}
+.user-display-name {
+    padding: .5em 1em;
+    color: #EEE;
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #1F2635;
+    text-align: center;
+}
