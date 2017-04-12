@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor</title>
+    <link rel="stylesheet" type="text/css" href="lib/wangEditor/dist/css/wangEditor.min.css">
+    <style type="text/css">
+        #div1 {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <p>请输入内容...</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="lib/wangEditor/dist/js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var menu = [
+                'source',
+                '|',
+                'bold',
+                'underline',
+                'italic',
+                'strikethrough',
+                'eraser',
+                'forecolor',
+                'bgcolor',
+                '|',
+                'quote',
+                'fontfamily',
+                'fontsize',
+                'head',
+                'unorderlist',
+                'orderlist',
+                'alignleft',
+                'aligncenter',
+                'alignright',
+                '|',
+                'link',
+                'unlink',
+                'table',
+                'insertcode',
+                '|',
+                'undo',
+                'redo'
+            ];
+            var editor = new wangEditor('div1');
+            editor.config.menus = menu;
+            editor.config.familys = [
+                'Arial', 'Verdana', 'Georgia'
+            ];
+            editor.config.lang = wangEditor.langs['en'];
+
+            editor.create();
+        });
+    </script>
+</body>
+
+</html>
